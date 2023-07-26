@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+  labels:
+    app: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - name: demo
+        image: demo:0.0.2-SNAPSHOT
+        # imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 30405
+
+# resource:
+#       limits:
+#         memory: 512Mi
+#         cpu: "1"
+#       requests:
+#         memory: 256Mi
+#         cpu: "0.2"
